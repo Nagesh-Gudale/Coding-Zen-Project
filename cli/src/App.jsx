@@ -22,6 +22,8 @@ import Meet from "./components/Meet/Meet";
 import Room from "./components/Meet/Room";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import StreaksQuestsPoints from "./components/Streaks/StreaksQuestsPoints";
+import TechnQuest from "./components/TechQuest/TechQuest";
+import CollaborationGroups from "./components/Meet/CollaborationGroups";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -60,6 +62,8 @@ function App() {
           <Route path="/survey" element={<Survey />} />
           <Route path="/meet" element={<Meet />} />
           <Route path="/room/:roomId" element={<Room />} />
+          <Route path="/techquest" element={<TechnQuest />} />
+          <Route path="/collaboration-groups" element={<CollaborationGroups />} />
         </Route>
       </Routes>
     </Router>

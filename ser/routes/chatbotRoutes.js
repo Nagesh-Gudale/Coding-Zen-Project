@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const genAI = new GoogleGenerativeAI("AIzaSyCw75gjJepfgcQlRWBqpTh8sHvfBFGFX_w");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const genAI = new GoogleGenerativeAI("AIzaSyCH5ZAJj_UZ1keHO0tdPzt5KZXQPDZDtsg");
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
 router.post("/", async (req, res) => {
   try {

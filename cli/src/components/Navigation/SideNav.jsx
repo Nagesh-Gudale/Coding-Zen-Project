@@ -14,6 +14,7 @@ import {
   PieChart,
   MessageCircleMore,
   Lightbulb,
+  CodeXml,
   Zap
 } from "lucide-react";
 
@@ -28,7 +29,7 @@ const mainNavItems = [
   { icon: Lightbulb, label: "Test", href: "/test" },
   { icon: Mail, label: "PictoFlow", href: "/pictoflow" },
   { icon: Zap, label: "Streaks", href: "/streaks" },  // <-- Added Streaks here
-  { icon: FileText, label: "WorkFlow", href: "/workflow" },
+  {icon: CodeXml, label: "TechQuest", href: "/techquest" },
 ];
 
 const resourcesNavItems = [

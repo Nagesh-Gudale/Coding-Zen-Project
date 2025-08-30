@@ -1,3 +1,4 @@
+// 👇 Keep the top imports as is
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -24,14 +25,9 @@ const Meet = () => {
 
   const handleCreateRoom = async (e) => {
     e.preventDefault();
-    if (!userName.trim()) {
-      alert('Please enter your name first!');
-      return;
-    }
-    if (!roomName.trim()) {
-      alert('Please enter a room name');
-      return;
-    }
+    if (!userName.trim()) return alert('Please enter your name first!');
+    if (!roomName.trim()) return alert('Please enter a room name');
+
     try {
       const res = await axios.post('http://localhost:3000/room', { room: roomName.trim() });
       if (res.data.success) {
@@ -46,11 +42,12 @@ const Meet = () => {
   };
 
   const handleJoinRoom = (room) => {
-    if (!userName.trim()) {
-      alert('Please enter your name first!');
-      return;
-    }
+    if (!userName.trim()) return alert('Please enter your name first!');
     navigate(`/room/${encodeURIComponent(room)}?name=${encodeURIComponent(userName.trim())}`);
+  };
+
+  const handleGoToCollabGroups = () => {
+    navigate('/collaboration-groups');
   };
 
   return (
@@ -102,8 +99,8 @@ const Meet = () => {
               borderRadius: '6px',
               border: '1px solid #b3d9f7',
               marginBottom: '15px',
-              backgroundColor: '#ffffff'
-              , color: '#333'
+              backgroundColor: '#ffffff',
+              color: '#333'
             }}
           />
           <button
@@ -119,11 +116,31 @@ const Meet = () => {
               fontWeight: 'bold',
               color: '#fff',
               cursor: 'pointer',
-              transition: 'background-color 0.3s'
+              transition: 'background-color 0.3s',
+              marginBottom: '10px'
             }}
           >
             Continue
           </button>
+
+          {/* 🔗 New Button for Collaboration Groups */}
+          <button
+            onClick={handleGoToCollabGroups}
+            style={{
+              width: '100%',
+              padding: '10px',
+              backgroundColor: '#009688',
+              border: 'none',
+              borderRadius: '6px',
+              fontWeight: 'bold',
+              color: '#fff',
+              cursor: 'pointer',
+              transition: 'background-color 0.3s'
+            }}
+          >
+            Explore Collaboration Groups
+          </button>
+
           <div style={{ marginTop: '20px' }}>
             <h3 style={{ color: '#007acc' }}>Available Rooms</h3>
             {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -157,15 +174,15 @@ const Meet = () => {
             )}
           </div>
         </div>
+
+        {/* 🎨 Right Side Background Image */}
         <div style={{
           flex: 1,
           backgroundImage: 'url("/Back.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
-        }}>
-          {/* Empty div because the image is set as background */}
-        </div>
+        }}></div>
       </div>
     </div>
   );
